@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<style>
+
+.container 		{
+    font-family:'Roboto';
+    display:block; 
+    background:#FFF;
+    padding:10px 50px 50px;
+    float:left;
+    margin-left: 37%;
+}
+
+/* form starting stylings ------------------------------- */
+.group 			  { 
+    position:relative; 
+    margin-bottom:60px; 
+}
+input 				{
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:300px;
+    border:none;
+    border-bottom:1px solid #757575;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+.textlabel 				 {
+    color:#999; 
+    font-size:18px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:5px;
+    top:10px;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+    top:-20px;
+    font-size:14px;
+    color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:349px; }
+.bar:before, .bar:after 	{
+    content:'';
+    height:1px; 
+    width:0;
+    bottom:1px; 
+    position:absolute;
+    background:#5264AE; 
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+}
+.bar:before {
+    left:50%;
+}
+.bar:after {
+    right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+    position:absolute;
+    height:60%; 
+    width:100px; 
+    top:25%; 
+    left:0;
+    pointer-events:none;
+    opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+    -webkit-animation:inputHighlighter 0.3s ease;
+    -moz-animation:inputHighlighter 0.3s ease;
+    animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+    from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+    from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+}
+
+select {
+        width: 140px;
+        height: 35px;
+        padding: 5px 35px 5px 5px;
+        font-size: 18px;
+        border: 2px solid #ccc;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        /*background: url("/uploads/media/default/0001/02/f7b4d3d2ba3fe1d8518e6e63d7740e1e73921abf.png") 96% / 15% no-repeat #eee;*/
+        }
+        select::-ms-expand { 
+        display: none; /* remove default arrow in IE 10 and 11 */
+        }
+
+
+
+
+
+        [type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="checkbox"]:checked + label,
+[type="checkbox"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+[type="checkbox"]:checked + label:before,
+[type="checkbox"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="checkbox"]:checked + label:after,
+[type="checkbox"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #F87DA9;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="checkbox"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+button{
+    background:#FFCCE5;
+    color:#000;
+    border:none;
+    position:relative;
+    height:60px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+}
+button:hover{
+    background:#fff;
+    color:#FFCCE5;
+}
+button:before,button:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #FFCCE5;
+    transition:400ms ease all;
+}
+button:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+button:hover:before,button:hover:after{
+    width:100%;
+    transition:800ms ease all;
+}
+
+
+
+body
+{
+    /* text-align: center; */
+    background: #FFCCE5;
+    /*background-image: url('https://lauruscollege.edu/wp-content/uploads/2018/10/laurus_hero.jpg');*/
+}
+</style>
+<body>
+
+    <section id="one" class="main special">
+        <div class="container">
+          <div class="content">
+            <header class="major">
+              <h2>주소 입력</h2>
+              <p>위도 경도 얻기</p>
+            </header>
+          </div>
+          <div class="map_wrap">
+            <div
+              id="map"
+              style="
+                width: 100%;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+              "
+            ></div>
+            <div id="menu_wrap" class="bg_white">
+              <div class="option">
+                <div>
+                  <form onsubmit="searchPlaces(); return false;">
+                    키워드 :
+                    <input
+                      type="text"
+                      value="선문대학교"
+                      id="keyword"
+                      size="15"
+                    />
+                    <button style="background-color:#FF385C;" class="button primary scrolly"  type="submit">검색하기</button>
+                  </form>
+                </div>
+              </div>
+              <hr />
+              <ul id="placesList"></ul>
+              <div id="pagination"></div>
+            </div>
+          </div>
+          <p><em>지도를 클릭해주세요!</em></p>
+              <p id="result"></p>
+          <a style="background-color:#FF385C;"href="#two" class="goto-next scrolly">Next</a>
+        </div>
+      </section>
+
+<div class="container">
+        <h2>Input the Information</h2>
+        <form  method="GET" action="/calculate">
+            
+            <div class="group">
+                <input type="text" name="seoul" required>
+                <label class="textlabel" name="seoul">seoul</label>
+            </div>
+
+            <div class="group">      
+            <input type="text" name="num" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="textlabel" for="num">Accomodates</label>
+            
+            </div> 
+            
+            <div class="group">      
+            <input type="text" name="bed" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="textlabel" for="bed">BedRooms</label class="textlabel">
+            
+            </div>
+
+            <div class="group">      
+                <input type="text" name="bath" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="textlabel" for="bath">BathRooms</label class="textlabel">
+                
+            </div>
+                       
+
+            <div class="group">  
+                <input type="text" name="lat" required>    
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="textlabel" for="lat">Latitude</label class="textlabel">
+                
+            </div>
+
+            <div class="group">      
+                <input type="text" name="long" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="textlabel" for="long">Longitude</label class="textlabel">
+                
+            </div>
+            
+            <div class="group">  
+                <input type="text" name="min" required>    
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="textlabel" for="min">Minstay</label class="textlabel">
+            </div>
+
+            <div class="group">        
+            <p>
+                <h4>Room Type</h4>
+            </p> 
+            <br>
+            <br>   
+
+            <p>
+                <input type="checkbox" id="1" name="ss1" onclick="oneCheckbox1(this)">
+                <label for="1">Private room</label>
+            </p>
+            <p>
+                <input type="checkbox" id="2" name="ss2" onclick="oneCheckbox1(this)">
+                <label for="2">Entire home/apt</label>
+            </p>
+            <p>
+                <input type="checkbox" id="3" name="ss3" onclick="oneCheckbox1(this)">
+                <label for="3">Shared room</label>
+            </p>
+            
+            <button type="submit">Prediction</button>
+            </div>
+        </form>
+        
+        
+        </div>
+    </div>
+
+        
+        
+        
+            
+         <!--   
+        <script type="text/javascript">
+            
+            function oneCheckbox1(b) {
+                
+                
+                const obj1 = document.getElementsByName("ss");
+                
+                obj1.forEach((cb) => {
+                    cb.checked = false;                    
+                })
+                b.checked = true;
+                
+            }
+        </script>-->
+        <script src="{{ url_for('static', filename='js/jquery.scrollex.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.scrolly.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5ff94f7d75cca653f32f0e833954c184&libraries=services,clusterer,drawing"
+    ></script>
+    <script>
+		const $map = document.querySelector("#map");
+    // 위도와 경도 querySelector 추가
+		const $lat = document.querySelector("#lat");
+    const $long = document.querySelector("#long");
+      // 마커를 담을 배열입니다
+      var markers = [];
+      var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+        mapOption = {
+          center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+          level: 3, // 지도의 확대 레벨
+        };
+      // 지도를 생성합니다
+      var map = new kakao.maps.Map(mapContainer, mapOption);
+      // 장소 검색 객체를 생성합니다
+      var ps = new kakao.maps.services.Places();
+      // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+      var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+      // 키워드로 장소를 검색합니다
+      searchPlaces();
+      // 지도에 클릭 이벤트를 등록합니다
+      // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+      kakao.maps.event.addListener(map, "click", function (mouseEvent) {
+        // 클릭한 위도, 경도 정보를 가져옵니다
+        var latlng = mouseEvent.latLng;
+        var message = "클릭한 위치의 위도는 " + latlng.getLat()+", ";
+        message += "경도는 " + latlng.getLng() + " 입니다.";
+        message += "위도와 경도가 입력 되었습니다. 다음 단계를 진행해주세요.";
+        
+        var resultDiv = document.getElementById("result");
+      $lat.value=latlng.getLat();
+      $long.value=latlng.getLng();
+        resultDiv.innerHTML = message;
+      });
+      // 키워드 검색을 요청하는 함수입니다
+      function searchPlaces() {
+        var keyword = document.getElementById("keyword").value;
+        if (!keyword.replace(/^\s+|\s+$/g, "")) {
+          alert("키워드를 입력해주세요!");
+          return false;
+        }
+        // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+        ps.keywordSearch(keyword, placesSearchCB);
+      }
+      // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+      function placesSearchCB(data, status, pagination) {
+        if (status === kakao.maps.services.Status.OK) {
+          // 정상적으로 검색이 완료됐으면
+          // 검색 목록과 마커를 표출합니다
+          displayPlaces(data);
+          // 페이지 번호를 표출합니다
+          displayPagination(pagination);
+        } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+          alert("검색 결과가 존재하지 않습니다.");
+          return;
+        } else if (status === kakao.maps.services.Status.ERROR) {
+          alert("검색 결과 중 오류가 발생했습니다.");
+          return;
+        }
+      }
+      // 검색 결과 목록과 마커를 표출하는 함수입니다
+      function displayPlaces(places) {
+        var listEl = document.getElementById("placesList"),
+          menuEl = document.getElementById("menu_wrap"),
+          fragment = document.createDocumentFragment(),
+          bounds = new kakao.maps.LatLngBounds(),
+          listStr = "";
+        // 검색 결과 목록에 추가된 항목들을 제거합니다
+        removeAllChildNods(listEl);
+        // 지도에 표시되고 있는 마커를 제거합니다
+        removeMarker();
+        for (var i = 0; i < places.length; i++) {
+          // 마커를 생성하고 지도에 표시합니다
+          var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
+            marker = addMarker(placePosition, i),
+            itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+          // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+          // LatLngBounds 객체에 좌표를 추가합니다
+          bounds.extend(placePosition);
+          // 마커와 검색결과 항목에 mouseover 했을때
+          // 해당 장소에 인포윈도우에 장소명을 표시합니다
+          // mouseout 했을 때는 인포윈도우를 닫습니다
+          (function (marker, title) {
+            kakao.maps.event.addListener(marker, "mouseover", function () {
+              displayInfowindow(marker, title);
+            });
+            kakao.maps.event.addListener(marker, "mouseout", function () {
+              infowindow.close();
+            });
+            itemEl.onmouseover = function () {
+              displayInfowindow(marker, title);
+            };
+            itemEl.onmouseout = function () {
+              infowindow.close();
+            };
+          })(marker, places[i].place_name);
+          fragment.appendChild(itemEl);
+        }
+        // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
+        listEl.appendChild(fragment);
+        menuEl.scrollTop = 0;
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+        map.setBounds(bounds);
+      }
+      // 검색결과 항목을 Element로 반환하는 함수입니다
+      function getListItem(index, places) {
+        var el = document.createElement("li"),
+          itemStr =
+            '<span class="markerbg marker_' +
+            (index + 1) +
+            '"></span>' +
+            '<div class="info">' +
+            "   <h5>" +
+            places.place_name +
+            "</h5>";
+        if (places.road_address_name) {
+          itemStr +=
+            "    <span>" +
+            places.road_address_name +
+            "</span>" +
+            '   <span class="jibun gray">' +
+            places.address_name +
+            "</span>";
+        } else {
+          itemStr += "    <span>" + places.address_name + "</span>";
+        }
+        itemStr += '  <span class="tel">' + places.phone + "</span>" + "</div>";
+        el.innerHTML = itemStr;
+        el.className = "item";
+        return el;
+      }
+      // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+      function addMarker(position, idx, title) {
+        var imageSrc =
+            "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
+          imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
+          imgOptions = {
+            spriteSize: new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+            spriteOrigin: new kakao.maps.Point(0, idx * 46 + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+            offset: new kakao.maps.Point(13, 37), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+          },
+          markerImage = new kakao.maps.MarkerImage(
+            imageSrc,
+            imageSize,
+            imgOptions
+          ),
+          marker = new kakao.maps.Marker({
+            position: position, // 마커의 위치
+            image: markerImage,
+          });
+        marker.setMap(map); // 지도 위에 마커를 표출합니다
+        markers.push(marker); // 배열에 생성된 마커를 추가합니다
+        return marker;
+      }
+      // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+      function removeMarker() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(null);
+        }
+        markers = [];
+      }
+      // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
+      function displayPagination(pagination) {
+        var paginationEl = document.getElementById("pagination"),
+          fragment = document.createDocumentFragment(),
+          i;
+        // 기존에 추가된 페이지번호를 삭제합니다
+        while (paginationEl.hasChildNodes()) {
+          paginationEl.removeChild(paginationEl.lastChild);
+        }
+        for (i = 1; i <= pagination.last; i++) {
+          var el = document.createElement("a");
+          el.href = "#";
+          el.innerHTML = i;
+          if (i === pagination.current) {
+            el.className = "on";
+          } else {
+            el.onclick = (function (i) {
+              return function () {
+                pagination.gotoPage(i);
+              };
+            })(i);
+          }
+          fragment.appendChild(el);
+        }
+        paginationEl.appendChild(fragment);
+      }
+      // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+      // 인포윈도우에 장소명을 표시합니다
+      function displayInfowindow(marker, title) {
+        var content = '<div style="padding:5px;z-index:1;">' + title + "</div>";
+        infowindow.setContent(content);
+        infowindow.open(map, marker);
+      }
+      // 검색결과 목록의 자식 Element를 제거하는 함수입니다
+      function removeAllChildNods(el) {
+        while (el.hasChildNodes()) {
+          el.removeChild(el.lastChild);
+        }
+      }
+      
+    </script>
+</body>
+</html>

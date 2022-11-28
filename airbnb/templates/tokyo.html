@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<style>
+
+.container 		{
+    font-family:'Roboto';
+    display:block; 
+    background:#FFF;
+    padding:10px 50px 50px;
+    float:left;
+    margin-left: 37%;
+}
+
+/* form starting stylings ------------------------------- */
+.group 			  { 
+    position:relative; 
+    margin-bottom:60px; 
+}
+input 				{
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:300px;
+    border:none;
+    border-bottom:1px solid #757575;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+.textlabel 				 {
+    color:#999; 
+    font-size:18px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:5px;
+    top:10px;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+    top:-20px;
+    font-size:14px;
+    color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:349px; }
+.bar:before, .bar:after 	{
+    content:'';
+    height:1px; 
+    width:0;
+    bottom:1px; 
+    position:absolute;
+    background:#5264AE; 
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+}
+.bar:before {
+    left:50%;
+}
+.bar:after {
+    right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+    position:absolute;
+    height:60%; 
+    width:100px; 
+    top:25%; 
+    left:0;
+    pointer-events:none;
+    opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+    -webkit-animation:inputHighlighter 0.3s ease;
+    -moz-animation:inputHighlighter 0.3s ease;
+    animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+    from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+    from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+}
+
+select {
+        width: 140px;
+        height: 35px;
+        padding: 5px 35px 5px 5px;
+        font-size: 18px;
+        border: 2px solid #ccc;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        /*background: url("/uploads/media/default/0001/02/f7b4d3d2ba3fe1d8518e6e63d7740e1e73921abf.png") 96% / 15% no-repeat #eee;*/
+        }
+        select::-ms-expand { 
+        display: none; /* remove default arrow in IE 10 and 11 */
+        }
+
+
+
+
+
+        [type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="checkbox"]:checked + label,
+[type="checkbox"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+[type="checkbox"]:checked + label:before,
+[type="checkbox"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="checkbox"]:checked + label:after,
+[type="checkbox"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #F87DA9;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="checkbox"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+button{
+    background:#FFCCE5;
+    color:#000;
+    border:none;
+    position:relative;
+    height:60px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+}
+button:hover{
+    background:#fff;
+    color:#FFCCE5;
+}
+button:before,button:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #FFCCE5;
+    transition:400ms ease all;
+}
+button:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+button:hover:before,button:hover:after{
+    width:100%;
+    transition:800ms ease all;
+}
+
+
+
+body
+{
+    /* text-align: center; */
+    background: #FFCCE5;
+    /*background-image: url('https://lauruscollege.edu/wp-content/uploads/2018/10/laurus_hero.jpg');*/
+}
+</style>
+<body>
+<div class="container">
+        <h2>Input the Information</h2>
+        <form  method="GET" action="/calculate">
+            
+            <div class="group">
+                <input type="text" name="tokyo" required>
+                <label class="textlabel" name="tokyo">tokyo</label>
+            </div>
+
+            <div class="group">      
+            <input type="text" name="num" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="textlabel" for="num">Accomodates</label>
+            
+            </div> 
+            
+            <div class="group">      
+            <input type="text" name="bed" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="textlabel" for="bed">BedRooms</label class="textlabel">
+            
+            </div>
+
+            <div class="group">      
+                <input type="text" name="bath" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="textlabel" for="bath">BathRooms</label class="textlabel">
+                
+            </div>
+                       
+
+            <div class="group">  
+                <input type="text" name="lat" required>    
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="textlabel" for="lat">Latitude</label class="textlabel">
+                
+            </div>
+
+            <div class="group">      
+                <input type="text" name="long" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="textlabel" for="long">Longitude</label class="textlabel">
+                
+            </div>
+            
+            <div class="group">  
+                <input type="text" name="min" required>    
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="textlabel" for="min">Minstay</label class="textlabel">
+            </div>
+
+            <div class="group">        
+            <p>
+                <h4>Room Type</h4>
+            </p> 
+            <br>
+            <br>   
+
+            <p>
+                <input type="checkbox" id="1" name="ss1" onclick="oneCheckbox1(this)">
+                <label for="1">Private room</label>
+            </p>
+            <p>
+                <input type="checkbox" id="2" name="ss2" onclick="oneCheckbox1(this)">
+                <label for="2">Entire home/apt</label>
+            </p>
+            <p>
+                <input type="checkbox" id="3" name="ss3" onclick="oneCheckbox1(this)">
+                <label for="3">Shared room</label>
+            </p>
+            
+            <button type="submit">Prediction</button>
+            </div>
+        </form>
+        
+        
+        </div>
+    </div>
+
+        
+        
+        
+            
+         <!--   
+        <script type="text/javascript">
+            
+            function oneCheckbox1(b) {
+                
+                
+                const obj1 = document.getElementsByName("ss");
+                
+                obj1.forEach((cb) => {
+                    cb.checked = false;                    
+                })
+                b.checked = true;
+                
+            }
+        </script>-->
+</body>
+</html>
